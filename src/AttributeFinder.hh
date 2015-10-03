@@ -4,7 +4,6 @@ namespace attribute;
 
 use ReflectionClass;
 use ReflectionMethod;
-use Generator;
 
 final class AttributeFinder
 {
@@ -30,7 +29,7 @@ final class AttributeFinder
         return $attributes->at($attrName);
     }
 
-    public function findMethodAttribute(string $attrName) : Generator<string, array<mixed>, void>
+    public function findMethodAttribute(string $attrName) : MethodAttributeParameters
     {
         foreach ($this->class->getMethods() as $method) {
             $attributes = new ImmMap($method->getAttributes());
