@@ -17,6 +17,11 @@ abstract class ClassAttribute implements Attribute
         return new ReflectionClass(static::class);
     }
 
+    public static function fromParameters(array<mixed> $parameters) : this
+    {
+        return static::reflection()->newInstanceArgs($parameters);
+    }
+
     public static function findByClassName(string $className) : ?this
     {
         return static::findByClass(new ReflectionClass($className));
@@ -31,7 +36,7 @@ abstract class ClassAttribute implements Attribute
             return null;
         }
 
-        return static::reflection()->newInstanceArgs($parameters);
+        return static::fromParameters($parameters);
     }
 
 }
