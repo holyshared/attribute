@@ -3,6 +3,7 @@
 namespace attribute;
 
 use ReflectionClass;
+use ReflectionMethod;
 
 abstract class MethodAttribute implements Attribute
 {
@@ -34,6 +35,17 @@ abstract class MethodAttribute implements Attribute
         }
 
         return $result->toImmMap();
+    }
+
+    public static function findByMethod(ReflectionMethod $method) : ?MethodAttribute
+    {
+        $parameters = $method->getAttribute(static::name());
+
+        if ($parameters === null) {
+            return null;
+        }
+
+        return static::reflection()->newInstanceArgs($parameters);
     }
 
 }
