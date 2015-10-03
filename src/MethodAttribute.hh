@@ -18,6 +18,11 @@ abstract class MethodAttribute implements Attribute
         return new ReflectionClass(static::class);
     }
 
+    public static function fromParameters(array<mixed> $parameters) : this
+    {
+        return static::reflection()->newInstanceArgs($parameters);
+    }
+
     public static function findByClassName(string $className) : MethodAttributeMap
     {
         return static::findByClass(new ReflectionClass($className));
@@ -30,7 +35,7 @@ abstract class MethodAttribute implements Attribute
         $attributes = $finder->findMethodAttribute(static::name());
 
         foreach ($attributes as $key => $parameters) {
-            $attribute = static::reflection()->newInstanceArgs($parameters->values());
+            $attribute = static::fromParameters($parameters->toValuesArray());
             $result->set($key, $attribute);
         }
 
@@ -45,7 +50,7 @@ abstract class MethodAttribute implements Attribute
             return null;
         }
 
-        return static::reflection()->newInstanceArgs($parameters);
+        return static::fromParameters($parameters);
     }
 
 }
