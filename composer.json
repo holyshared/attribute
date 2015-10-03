@@ -21,7 +21,8 @@
   "autoload": {
     "psr-4": {
       "attribute\\": "src"
-    }
+    },
+    "files": [ "src/bootstrap.hh" ]
   },
   "autoload-dev": {
     "psr-4": {

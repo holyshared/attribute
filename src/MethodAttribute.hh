@@ -18,12 +18,12 @@ abstract class MethodAttribute implements Attribute
         return new ReflectionClass(static::class);
     }
 
-    public static function findByClassName(string $className) : ImmMap<string, MethodAttribute>
+    public static function findByClassName(string $className) : MethodAttributeMap
     {
         return static::findByClass(new ReflectionClass($className));
     }
 
-    public static function findByClass(ReflectionClass $class) : ImmMap<string, MethodAttribute>
+    public static function findByClass(ReflectionClass $class) : MethodAttributeMap
     {
         $result = Map {};
         $finder = new AttributeFinder($class);
