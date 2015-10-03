@@ -2,8 +2,9 @@
 
 namespace attribute\fixtures;
 
-<<UserClassAttribute('text')>>
-final class Target
+use attribute\MethodAttribute;
+
+final class UserMethodAttribute extends MethodAttribute
 {
 
     public function __construct(
@@ -12,7 +13,6 @@ final class Target
     {
     }
 
-    <<UserMethodAttribute('text')>>
     public function getDescription() : string
     {
         return $this->description;

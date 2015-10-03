@@ -17,10 +17,15 @@ abstract class MethodAttribute implements Attribute
         return new ReflectionClass(static::class);
     }
 
-    public static function lookup(string $className) : ImmMap<string, MethodAttribute>
+    public static function findByClassName(string $className) : ImmMap<string, MethodAttribute>
+    {
+        return static::findByReflection(new ReflectionClass($className));
+    }
+
+    public static function findByReflection(ReflectionClass $reflection) : ImmMap<string, MethodAttribute>
     {
         $result = Map {};
-        $finder = AttributeFinder::fromClassName($className);
+        $finder = new AttributeFinder($reflection);
         $attributes = $finder->findMethodAttribute(static::name());
 
         foreach ($attributes as $key => $parameters) {
@@ -30,4 +35,5 @@ abstract class MethodAttribute implements Attribute
 
         return $result->toImmMap();
     }
+
 }
