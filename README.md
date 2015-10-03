@@ -3,8 +3,10 @@ attribute
 
 Attribute for Hack
 
+[![Latest Stable Version](https://poser.pugx.org/holyshared/attribute/v/stable)](https://packagist.org/packages/holyshared/attribute)
 [![Build Status](https://travis-ci.org/holyshared/attribute.svg?branch=master)](https://travis-ci.org/holyshared/attribute)
 [![Dependency Status](https://www.versioneye.com/user/projects/560ff3b5a193340015000001/badge.svg?style=flat)](https://www.versioneye.com/user/projects/560ff3b5a193340015000001)
+[![License](https://poser.pugx.org/holyshared/attribute/license)](https://packagist.org/packages/holyshared/attribute)
 
 ClassAttribute
 --------------------
