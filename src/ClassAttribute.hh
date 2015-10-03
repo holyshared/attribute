@@ -19,12 +19,12 @@ abstract class ClassAttribute implements Attribute
 
     public static function findByClassName(string $className) : ?this
     {
-        return static::findByReflection(new ReflectionClass($className));
+        return static::findByClass(new ReflectionClass($className));
     }
 
-    public static function findByReflection(ReflectionClass $reflection) : ?this
+    public static function findByClass(ReflectionClass $class) : ?this
     {
-        $finder = new AttributeFinder($reflection);
+        $finder = new AttributeFinder($class);
         $parameters = $finder->findClassAttribute(static::name());
 
         if ($parameters === null) {

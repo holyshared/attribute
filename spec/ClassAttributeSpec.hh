@@ -14,12 +14,12 @@ describe(ClassAttribute::class, function() {
       expect($attribute->getDescription())->toBe('text');
     });
   });
-  describe('findByReflection()', function() {
+  describe('findByClass()', function() {
     beforeEach(function() {
       $this->class = new ReflectionClass(Target::class);
     });
     it('returns attribute', function () {
-      $attribute = UserClassAttribute::findByReflection($this->class);
+      $attribute = UserClassAttribute::findByClass($this->class);
 
       expect($attribute)->toBeAnInstanceOf(UserClassAttribute::class);
       expect($attribute->getDescription())->toBe('text');
