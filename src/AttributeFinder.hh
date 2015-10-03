@@ -37,7 +37,7 @@ final class AttributeFinder
             if ($attributes->contains($attrName) === false) {
                 continue;
             }
-            yield $method->getName() => $attributes->at($attrName);
+            yield $method->getName() => new ImmVector($attributes->at($attrName));
         }
     }
 

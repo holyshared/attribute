@@ -30,7 +30,7 @@ abstract class MethodAttribute implements Attribute
         $attributes = $finder->findMethodAttribute(static::name());
 
         foreach ($attributes as $key => $parameters) {
-            $attribute = static::reflection()->newInstanceArgs($parameters);
+            $attribute = static::reflection()->newInstanceArgs($parameters->values());
             $result->set($key, $attribute);
         }
 
