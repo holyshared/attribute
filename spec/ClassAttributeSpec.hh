@@ -1,5 +1,6 @@
 <?hh //partial
 
+use attribute\ClassAttribute;
 use attribute\fixtures\Target;
 use attribute\fixtures\UserClassAttribute;
 use ReflectionClass;
