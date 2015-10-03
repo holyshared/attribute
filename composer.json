@@ -1,0 +1,26 @@
+{
+    "name": "holyshared/attribute",
+    "type": "library",
+    "keywords": [ "hack", "hhvm", "attribute", "annotation" ],
+    "description": "Attribute for Hack",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Noritaka Horio",
+            "email": "holy.shared.design@gmail.com"
+        }
+    ],
+    "require": {
+        "hhvm": ">=3.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "attribute\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "example\\": "example"
+        }
+    }
+}
