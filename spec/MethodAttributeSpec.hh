@@ -15,18 +15,19 @@ describe(MethodAttribute::class, function() {
       expect($attributes)->toBeAnInstanceOf(ImmMap::class);
       expect($attributes)->toHaveLength(1);
 
-      $attribute = $attributes->at('getDescription');
+      $attribute = $attributes->at('attribute');
       expect($attribute)->toBeAnInstanceOf(UserMethodAttribute::class);
-      expect($attribute->getDescription())->toBe('text');
+      expect($attribute->getName())->toBe('text');
     });
   });
 
   describe('findByMethod()', function() {
     it('returns attribute', function () {
-      $attribute = UserMethodAttribute::findByMethod(new ReflectionMethod(Target::class, 'getDescription'));
+      $attribute = UserMethodAttribute::findByMethod(new ReflectionMethod(Target::class, 'attribute'));
 
       expect($attribute)->toBeAnInstanceOf(UserMethodAttribute::class);
-      expect($attribute->getDescription())->toBe('text');
+      expect($attribute->getName())->toBe('text');
+      expect($attribute->getQuantity())->toBe(100);
     });
   });
 

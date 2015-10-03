@@ -7,15 +7,15 @@ final class Target
 {
 
     public function __construct(
-        private string $description
+        private string $attribute
     )
     {
     }
 
-    <<UserMethodAttribute('text')>>
-    public function getDescription() : string
+    <<UserMethodAttribute('text', 100)>>
+    public function attribute() : string
     {
-        return $this->description;
+        return $this->attribute;
     }
 
 }

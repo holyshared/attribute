@@ -8,14 +8,20 @@ final class UserMethodAttribute extends MethodAttribute
 {
 
     public function __construct(
-        private string $description
+        private string $name,
+        private int $quantity
     )
     {
     }
 
-    public function getDescription() : string
+    public function getName() : string
     {
-        return $this->description;
+        return $this->name;
+    }
+
+    public function getQuantity() : int
+    {
+        return $this->quantity;
     }
 
 }
