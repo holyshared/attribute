@@ -20,7 +20,7 @@ abstract class MethodAttribute implements Attribute
     public static function lookup(string $className) : ImmMap<string, MethodAttribute>
     {
         $result = Map {};
-        $finder = new AttributeFinder($className);
+        $finder = AttributeFinder::fromClassName($className);
         $attributes = $finder->findMethodAttribute(static::name());
 
         foreach ($attributes as $key => $parameters) {

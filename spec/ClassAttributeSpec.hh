@@ -2,12 +2,26 @@
 
 use attribute\fixtures\Target;
 use attribute\fixtures\UserClassAttribute;
+use ReflectionClass;
 
 describe(ClassAttribute::class, function() {
-  describe('lookup()', function() {
+  describe('findByClassName()', function() {
     it('returns attribute', function () {
-      $attribute = UserClassAttribute::lookup(Target::class);
+      $attribute = UserClassAttribute::findByClassName(Target::class);
+
       expect($attribute)->toBeAnInstanceOf(UserClassAttribute::class);
+      expect($attribute->getDescription())->toBe('text');
+    });
+  });
+  describe('findByReflection()', function() {
+    beforeEach(function() {
+      $this->class = new ReflectionClass(Target::class);
+    });
+    it('returns attribute', function () {
+      $attribute = UserClassAttribute::findByReflection($this->class);
+
+      expect($attribute)->toBeAnInstanceOf(UserClassAttribute::class);
+      expect($attribute->getDescription())->toBe('text');
     });
   });
 });

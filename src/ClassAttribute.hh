@@ -16,10 +16,15 @@ abstract class ClassAttribute implements Attribute
     {
         return new ReflectionClass(static::class);
     }
-  
-    public static function lookup(string $className) : ?this
+
+    public static function findByClassName(string $className) : ?this
     {
-        $finder = new AttributeFinder($className);
+        return static::findByReflection(new ReflectionClass($className));
+    }
+
+    public static function findByReflection(ReflectionClass $reflection) : ?this
+    {
+        $finder = new AttributeFinder($reflection);
         $parameters = $finder->findClassAttribute(static::name());
 
         if ($parameters === null) {
@@ -28,4 +33,5 @@ abstract class ClassAttribute implements Attribute
 
         return static::reflection()->newInstanceArgs($parameters);
     }
+
 }

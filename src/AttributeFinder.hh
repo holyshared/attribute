@@ -9,11 +9,15 @@ use Generator;
 final class AttributeFinder
 {
 
-    private ReflectionClass $class;
-
-    public function __construct(string $className)
+    public function __construct(
+        private ReflectionClass $class
+    )
     {
-        $this->class = new ReflectionClass($className);
+    }
+
+    public static function fromClassName(string $name) : this
+    { 
+        return new AttributeFinder(new ReflectionClass($name));
     }
 
     public function findClassAttribute(string $attrName) : ?array<mixed>
