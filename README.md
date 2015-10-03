@@ -53,6 +53,6 @@ namespace example;
 $attribute = Tag::findByClassName(TaggedTarget::class);
 var_dump($attribute->value()); // Tag attribute instance
 
-$attribute = Tag::findByClassName(new ReflectionClass(TaggedTarget::class));
+$attribute = Tag::findByClass(new ReflectionClass(TaggedTarget::class));
 var_dump($attribute->value()); // Tag attribute instance
 ```
